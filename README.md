@@ -1,3 +1,3 @@
 # first learning project
 
-basic notes tool, using flask and bootstrap
+basic notes tool, using flask, bootstrap and sqlalchemy 

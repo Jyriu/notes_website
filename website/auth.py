@@ -19,20 +19,20 @@ def logout():
 def sign_up():
     if request.method == 'POST':
         email = request.form.get('email')
-        first_name = request.form.get('first_name')
+        firstname = request.form.get('firstname')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
         if email is None or len(email) < 4:
             flash("L'adresse email doit contenir au moins 4 caractères.", category='error')
-        elif first_name is None or len(first_name) < 2:
+        elif firstname is None or len(firstname) < 2:
             flash("Le prénom doit contenir au moins 2 caractères.", category='error')
         elif password1  is None or password2 is None or password1 != password2:
             flash("Les mots de passe ne correspondent pas.", category='error')
         elif password1 is None or len(password1) < 7:
             flash("Le mot de passe doit contenir au moins 7 caractères", category='error')
         else:
-            new_user = User(email=email, first_name=first_name, password=generate_password_hash(password1, method='pbkdf2:sha256'))
+            new_user = User(email=email, firstname=firstname, password=generate_password_hash(password1, method='pbkdf2:sha256'))
             db.session.add(new_user)
             db.session.commit()
             flash("Inscription réussie!", category='success')
